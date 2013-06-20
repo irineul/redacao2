@@ -1,0 +1,136 @@
+
+
+.content{
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.tableDiv 
+{
+	
+	margin-top: 5%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.clear
+{
+	margin-top: 1em;
+	margin-botton: 1em;
+}
+
+.addButton
+{
+	float: right;
+}
+
+.tablePagination
+{
+	
+	float: right;
+}
+
+#salvarProcessoBtn{
+	float: right;
+}
+
+#textAreaInput{
+	height: 6em;
+	width: 61em;
+}
+
+#topHero{
+	height: 1em;
+}
+
+.cardapioTable
+{
+	float:right;	
+}
+
+.cardapioForm
+{
+	float: left;
+}
+
+.groupForm
+{
+	border: solid red 1;
+	height: 100px;
+	float: right;	
+}
+
+.myhero{
+	height: 5em;
+}
+.dadosClientes
+{
+	/*Gamba to be fixed*/
+	margin-top: -52px;
+}
+
+.error
+{
+	color: #FF6347;
+}
+
+.topMsg{
+	width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+#calculos{
+	display: inline-block;	
+}
+
+.rightBox{
+	margin-left: 3em;
+	float: right;
+}
+
+.leftBox{
+	margin-top: 1em;
+	float: left;
+}
+
+.txtAreaSendMsg{
+	margin-right: auto;
+	margin-left:auto;
+}
+
+/***************************************RESPOSTA PROCESSO CSS************************************************************/
+
+.respostaProcessoButtons{
+	left:0
+	left: 0;
+	width: 160px;
+}
+
+.respostaProcessoButtons input{
+	margin-right: 5px;
+}
+
+#gridBootstrap a:link
+{
+	color: #000000; 
+}
+
+#gridBootstrap a:visited
+{
+	color: #000000; 
+	text-decoration: none;
+}
+
+#gridBootstrap a:hover
+{
+	color: #1E90FF;
+}
+
+#gridBootstrap a:active
+{
+	color: #000000; 
+	text-decoration: none;
+}
