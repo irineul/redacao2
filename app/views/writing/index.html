@@ -1,0 +1,72 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+<!-- Button to trigger modal -->
+    <a href="#myModal" role="button" class="btn" data-toggle="modal">Enviar Nova Redacão</a>
+
+	<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="grid">
+      <thead>
+                 <tr>
+                   <th>Titulo</th>
+                   <th>Arquivo</th>
+                   <th>Data De Envio</th>
+                   <th>Nota</th>
+                   <th>Excluir</th>
+                 </tr>
+         </thead>
+         <tbody>
+
+
+		#{list items:writings, as:'writing'}
+                <tr>
+                   <td>${writing.title}</td>
+                   <td>${writing.writingFile.name}</td>
+                   <td>${writing.uploadDate}</td>
+                   <td>${writing.score}</td>
+                   <td><a href="#">Excluir</a></td>
+                </tr>
+		#{/list}
+		</tbody>
+ 	</table>
+ 	
+ 	
+ 	
+ 	<!-- Modal -->
+	<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-header">
+	    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	    <h3 id="myModalLabel">Nova Redação</h3>
+	  </div>
+	  <div class="modal-body">
+
+	    <fieldset>
+	 #{form id: 'formWriting', enctype:'multipart/form-data', action:@Writing.save() }
+					<div class="control-group">
+						<label class="control-label" for="nome">Título</label>
+						<div class="controls">
+							<input type="text" class="input-xlarge" id="title" name="title"> 
+						</div>
+					</div>
+		
+					<label class="control-label" for="nome">Redação</label>
+					<div class="fileupload fileupload-new" data-provides="fileupload">
+						  <div class="input-append">
+						    <div class="uneditable-input span3">
+						    	<i class="icon-file fileupload-exists"></i> 
+						    	<span class="fileupload-preview"></span>
+						    </div>
+						    <span class="btn btn-file">
+						    	<span class="fileupload-new">Selecione</span>
+						    	<span class="fileupload-exists">Alterar</span>
+						    	<input type="file"  name="writingFile" id="writingFile" /></span><a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remover</a>
+						  </div>
+					</div>
+			    </fieldset>
+
+	  </div>
+	  <div class="modal-footer">
+	    <button class="btn" data-dismiss="modal" aria-hidden="true">Fechar</button>
+	    <button class="btn btn-primary" type="submit">Enviar</button>
+	  </div>
+	  #{/}
+	</div>
