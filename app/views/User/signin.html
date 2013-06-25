@@ -1,0 +1,54 @@
+#{extends 'main.html' /}
+#{set title:'Home' /} 
+#{get 'moreStyles' /}
+#{get 'moreScripts' /}
+
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="@{'/public/stylesheets/signin.css'}">
+</head>
+	<body>
+    <div id="box_login">
+        <div class="container">
+            <div class="span12 box_wrapper">
+                <div class="span12 box">
+                    <div>
+                        <div class="head">
+                            <h4>Log in to your account</h4>
+                        </div>
+                        <div class="social">
+                            <a class="face_login" href="#">
+                                <span class="face_icon">
+                                    <img src="/public/img/i_face.png" alt="fb" alt=""/>
+                                </span>
+                                <span class="text">Sign in with Facebook</span>
+                            </a>
+                            <div class="division">
+                                <hr class="left">
+                                <span>or</span>
+                                <hr class="right">
+                            </div>
+                        </div>
+                        <div class="form">
+                            <form>
+                                <input type="text" placeholder="Email"/>
+                                <input type="password" placeholder="Password"/>
+                                <div class="remember">
+                                    <div class="left">
+                                        <input id="remember_me" type="checkbox">
+                                        <label for="remember_me">Remember me</label>
+                                    </div>
+                                    <div class="right">
+                                        <a href="@{User.reset()}">Forgot password?</a>
+                                    </div>
+                                </div>
+                                <input type="submit" class="btn" value="Sign in"/>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <p class="already">Don't have an account? <a href="@{User.signup()}"> Sign up</a></p>
+            </div>
+        </div>
+	</body>
+</html>

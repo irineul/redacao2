@@ -6,7 +6,6 @@
 	<!-- Bootstrap -->
     <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/bootstrap.css'}">
     <link rel="stylesheet" type="text/css" href="@{'/public/stylesheets/theme.css'}">
-    <link rel="stylesheet" type="text/css" href="@{'/public/stylesheets/animate.css'}">
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
 </head>
 <body>
@@ -22,7 +21,7 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
           	</a>
-          	<a class="brand scroller" data-section="body" href="index.html">
+          	<a class="brand scroller" data-section="body" href="@{Application.index()}">
                 <img src="/public/img/logo.png" alt="logo" />
             </a>
 		  	<div class="nav-collapse collapse">
@@ -31,9 +30,9 @@
                     <li><a href="#" class="scroller" data-section="#pricing">Professores</a></li>
                     <li><a href="#" class="scroller" data-section="#footer">Contato</a></li>
                     <li>
-                        <a class="btn-header" href="signup.html">Registrar</a>
+                        <a class="btn-header" href="@{User.signup()}">Registrar</a>
                     </li>
-                    <li><a class="btn-header" href="signin.html">Login</a></li>
+                    <li><a class="btn-header" href="@{User.signin()}">Login</a></li>
                 </ul>
 	        </div>
         </div>
