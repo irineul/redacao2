@@ -12,8 +12,7 @@ import play.db.jpa.Model;
 @Entity(name="USERS")
 public class UserModel extends Model{
 
-	@Unique
-	@Column(name="EMAIL")
+	@Column(name="EMAIL",unique=true)
 	private String email;
 	
 	@Column(name="PASSWORD")
