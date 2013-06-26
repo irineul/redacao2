@@ -1,6 +1,9 @@
 #{extends 'main.html' /}
 #{set title:'Home' /} 
 #{get 'moreStyles' /}
+
+<script src="@{'/public/javascripts/jquery.validate.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/signup.js'}" type="text/javascript" charset="${_response_encoding}"></script>
 #{get 'moreScripts' /}
 
 <html>
@@ -14,20 +17,23 @@
                 <div class="span12 box">
                     <div>
                         <div class="head">
-                            <h4>Create your account</h4>
+                            <h4>Crie sua conta</h4>
                         </div>
                         <div class="form">
-                            <form>
-                                <input type="text" placeholder="Email"/>
-                                <input type="password" placeholder="Password"/>
-                                <input type="password" placeholder="Confirm Password"/>
-                                <input type="submit" class="btn" value="Sign up"/>
-                            </form>
+                            #{form id: 'formUser', action:@User.insert() }
+                                <input type="text" placeholder="Email" name="email" id="email"/>
+                                <div class="errorMessage" id="emailValidation">Digite um e-mail válido</div>
+                                <input type="password" placeholder="Senha" name="password" id="password"/>
+                                <div class="errorMessage" id="passwordValidation">Este campo é obrigatório</div>
+                                <input type="password" placeholder="Confirme Senha" name="passwordConfirmation" id="passwordConfirmation"/>
+                                <div class="errorMessage" id="passwordConfirmationValidation">Este campo é obrigatório</div>
+                                <input type="button" class="btn" id="insertSubmitButton" name="insertSubmitButton" value="Cadastro"/>
+							#{/}
                         </div>
                     </div>
                 </div>
-                <p class="already">Already have an account? 
-                    <a href="@{User.signin()}">Sign in</a></p>
+                <p class="already">Você já tem uma conta? 
+                    <a href="@{User.signin()}">Entre</a></p>
             </div>
         </div>
     </div>
