@@ -1,5 +1,7 @@
 package daos;
 
+import java.util.List;
+
 import models.UserModel;
 
 public class UserDao {
@@ -18,5 +20,13 @@ public class UserDao {
 	public UserModel save(UserModel user) {
 		user.save();
 		return user;
+	}
+
+	public boolean isAValidUser(UserModel user) {
+		List<UserModel> result = UserModel.find("email = ? and password = ?", user.getEmail(),user.getPassword()).fetch();
+		if (result != null && result.size() > 0) {
+			return true;
+		}
+		return false;
 	}
 }

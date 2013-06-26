@@ -11,6 +11,8 @@ GET     /signup                                 User.signup
 GET     /signin                                 User.signin
 GET     /reset                                  User.reset
 
+GET     /interno                                Writing.index
+
 # Ignore favicon requests
 GET     /favicon.ico                            404
 

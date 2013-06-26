@@ -22,17 +22,21 @@ public class User extends Controller {
 	}
 	
     public static void insert() {
-    	
-    	UserModel user = new UserModel();
-    	user.setEmail(params.get("email", String.class));
-    	String password = params.get("password", String.class);
-    	password = GeneralHelper.getInstance().toMD5(password);
-    	user.setPassword(password);
-
+    	UserModel user = getUserFromRequest();
     	UserDao.getInstance().save(user);
     	EmailHelper.getInstance().sendEmail(user.getEmail(),"Bem-Vindo", "O Douglas é pica nao adianta");
-    	
     	signin();
+    }
+    
+    public static void login() {
+    	UserModel user = getUserFromRequest();
+    	if (UserDao.getInstance().isAValidUser(user)) {
+    		Writing.index();
+    	}else{
+    		signin();
+    	}
+    	
+    	
     }
 
     public static void signin() {
@@ -42,5 +46,13 @@ public class User extends Controller {
     public static void reset() {
         render();
     }
-    
+
+    private static UserModel getUserFromRequest() {
+		UserModel user = new UserModel();
+    	user.setEmail(params.get("email", String.class));
+    	String password = params.get("password", String.class);
+    	password = GeneralHelper.getInstance().toMD5(password);
+    	user.setPassword(password);
+    	return user;
+	}
 }

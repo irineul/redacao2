@@ -1,6 +1,7 @@
 #{extends 'main.html' /}
 #{set title:'Home' /} 
 #{get 'moreStyles' /}
+<script src="@{'/public/javascripts/signin.js'}" type="text/javascript" charset="${_response_encoding}"></script>
 #{get 'moreScripts' /}
 
 <html>
@@ -14,14 +15,14 @@
                 <div class="span12 box">
                     <div>
                         <div class="head">
-                            <h4>Log in to your account</h4>
+                            <h4>Entre na sua conta</h4>
                         </div>
                         <div class="social">
                             <a class="face_login" href="#">
                                 <span class="face_icon">
                                     <img src="/public/img/i_face.png" alt="fb" alt=""/>
                                 </span>
-                                <span class="text">Sign in with Facebook</span>
+                                <span class="text">Entre com seu Facebook</span>
                             </a>
                             <div class="division">
                                 <hr class="left">
@@ -30,24 +31,27 @@
                             </div>
                         </div>
                         <div class="form">
-                            <form>
-                                <input type="text" placeholder="Email"/>
-                                <input type="password" placeholder="Password"/>
+                            #{form id: 'formLogin', action:@User.login() }
+                                <input type="text" placeholder="Email" id="email" name="email"/>
+                                <div class="errorMessage" id="emailValidation"></div>
+                                <input type="password" placeholder="Password" id="password" name="password"/>
+                                <div class="errorMessage" id="passwordValidation"></div>
                                 <div class="remember">
                                     <div class="left">
                                         <input id="remember_me" type="checkbox">
-                                        <label for="remember_me">Remember me</label>
+                                        <label for="remember_me">Lembrar</label>
                                     </div>
                                     <div class="right">
-                                        <a href="@{User.reset()}">Forgot password?</a>
+                                        <a href="@{User.reset()}">Esqueceu sua senha?</a>
                                     </div>
                                 </div>
-                                <input type="submit" class="btn" value="Sign in"/>
+                                <input type="button" id="insertSubmitButton" class="btn" value="Entrar"/>
+                             #{/}
                             </form>
                         </div>
                     </div>
                 </div>
-                <p class="already">Don't have an account? <a href="@{User.signup()}"> Sign up</a></p>
+                <p class="already">Ainda n‹o se cadastrou? <a href="@{User.signup()}"> Cadastre-se em 30 segundos</a></p>
             </div>
         </div>
 	</body>
