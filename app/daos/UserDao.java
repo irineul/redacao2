@@ -22,11 +22,15 @@ public class UserDao {
 		return user;
 	}
 
-	public boolean isAValidUser(UserModel user) {
+	public UserModel findUserByEmailAndPassword(UserModel user) {
 		List<UserModel> result = UserModel.find("email = ? and password = ?", user.getEmail(),user.getPassword()).fetch();
 		if (result != null && result.size() > 0) {
-			return true;
+			return result.get(0);
 		}
-		return false;
+		return null;
+	}
+
+	public UserModel findById(long id) {
+		return UserModel.findById(id);
 	}
 }

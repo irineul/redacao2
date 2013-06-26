@@ -32,13 +32,18 @@
             </a>
 		  	<div class="nav-collapse collapse">
                 <ul class="nav pull-right">
-                    <li><a href="#" class="scroller" data-section="#features">Sobre N&oacute;s</a></li>
-                    <li><a href="#" class="scroller" data-section="#pricing">Professores</a></li>
-                    <li><a href="#" class="scroller" data-section="#footer">Contato</a></li>
-                    <li>
-                        <a class="btn-header" href="@{User.signup()}">Registrar</a>
-                    </li>
-                    <li><a class="btn-header" href="@{User.signin()}">Login</a></li>
+                	#{ if (helpers.GeneralHelper.getInstance().getCurrentUser() == null)}
+	                    <li><a href="#" class="scroller" data-section="#features">Sobre N&oacute;s</a></li>
+	                    <li><a href="#" class="scroller" data-section="#pricing">Professores</a></li>
+	                    <li><a href="#" class="scroller" data-section="#footer">Contato</a></li>
+	                    <li>
+	                        <a class="btn-header" href="@{User.signup()}">Registrar</a>
+	                    </li>
+	                    <li><a class="btn-header" href="@{User.signin()}">Login</a></li>
+	                #{/if}
+	                #{else}
+	                	<li><a class="btn-header" href="@{User.logout()}">Sair</a></li>
+	                #{/else}
                 </ul>
 	        </div>
         </div>

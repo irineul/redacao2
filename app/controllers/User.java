@@ -30,13 +30,19 @@ public class User extends Controller {
     
     public static void login() {
     	UserModel user = getUserFromRequest();
-    	if (UserDao.getInstance().isAValidUser(user)) {
+    	user = UserDao.getInstance().findUserByEmailAndPassword(user);
+    	if (user != null) {
+    		play.mvc.Scope.Session.current().put("userId",user.getId());
+    		System.out.println("User: " +user.id);
     		Writing.index();
     	}else{
     		signin();
     	}
-    	
-    	
+    }
+    
+    public static void logout() {
+		play.mvc.Scope.Session.current().put("userId",null);
+		signin();
     }
 
     public static void signin() {
