@@ -12,6 +12,7 @@ public class Writing extends Controller {
 
     public static void index() {
     	List<WritingModel> writings = WritingModel.findAll();
+    	System.out.println("$$$$$$$$$$$$$$$$"+writings.size());
         render(writings);
     }
     
