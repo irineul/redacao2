@@ -27,7 +27,7 @@
 		#{list items:writings, as:'writing'}
                 <tr>
                    <td>${writing.title}</td>
-                   <td>${writing.writingFile.name}</td>
+                   <td><a href="@{Writing.downloadFile(writing.documentId)}">${writing.document.comment}</a></td>
                    <td>${writing.uploadDate}</td>
                    <td>${writing.score}</td>
                    <td><a href="#">Excluir</a></td>

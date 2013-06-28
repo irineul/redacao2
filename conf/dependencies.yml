@@ -2,3 +2,5 @@
 
 require:
     - play
+    - play -> s3blobs 0.1
+    

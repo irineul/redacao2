@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Transient;
 
 import play.db.jpa.Model;
 
@@ -17,8 +18,11 @@ public class WritingModel extends Model{
 	@Column(name="SCORE")
 	private int score;
 	
-	@Column(name="FILE")
-	private File writingFile;
+	@Column(name="ID_DOCUMENT")
+	private Long documentId;
+	
+	@Transient
+	private DocumentoModel document;
 	
 	@Column(name="UPLOAD_DATE")
 	private Date uploadDate;
@@ -39,14 +43,6 @@ public class WritingModel extends Model{
 		this.score = score;
 	}
 
-	public File getWritingFile() {
-		return writingFile;
-	}
-
-	public void setWritingFile(File writingFile) {
-		this.writingFile = writingFile;
-	}
-
 	public Date getUploadDate() {
 		return uploadDate;
 	}
@@ -54,5 +50,20 @@ public class WritingModel extends Model{
 	public void setUploadDate(Date uploadDate) {
 		this.uploadDate = uploadDate;
 	}
-	
+
+	public Long getDocumentId() {
+		return documentId;
+	}
+
+	public void setDocumentId(Long documentId) {
+		this.documentId = documentId;
+	}
+
+	public DocumentoModel getDocument() {
+		return document;
+	}
+
+	public void setDocument(DocumentoModel document) {
+		this.document = document;
+	}
 }
