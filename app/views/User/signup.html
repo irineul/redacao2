@@ -1,27 +1,56 @@
 #{extends 'main.html' /}
 #{set title:'Home' /} 
 #{get 'moreStyles' /}
-
-<script src="@{'/public/javascripts/signup.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script src="@{'/public/javascripts/signin.js'}" type="text/javascript" charset="${_response_encoding}"></script>
 #{get 'moreScripts' /}
 
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="@{'/public/stylesheets/signup.css'}">
+	<link rel="stylesheet" type="text/css" href="@{'/public/stylesheets/signin.css'}">
 </head>
 	<body>
-    <div id="box_sign">
+	<div id="fb-root"></div>
+        <script>
+          //initializing API
+          window.fbAsyncInit = function() {
+            FB.init({appId: '435251833239716', status: true, cookie: true,
+                     xfbml: true});
+          };
+          (function() {
+            var e = document.createElement('script'); e.async = true;
+            e.src = document.location.protocol +
+              '//connect.facebook.net/pt_BR/all.js';
+            document.getElementById('fb-root').appendChild(e);
+          }());
+        </script>
+	
+    <div id="box_login">
         <div class="container">
             <div class="span12 box_wrapper">
                 <div class="span12 box">
                     <div>
                         <div class="head">
-                            <h4>Crie sua conta</h4>
+                            <h4>Entre na sua conta</h4>
+                        </div>
+                        <div class="social">
+                            <a style="cursor:pointer;" class="face_login" onclick="fblogin();return false;">
+                                <span class="face_icon">
+                                    <img src="/public/img/i_face.png" alt="fb" alt=""/>
+                                </span>
+                                <span class="text">Cadastrar pelo Facebook</span>
+                            </a>
+                            <div class="division">
+                                <hr class="left">
+                                <span>ou</span>
+                                <hr class="right">
+                            </div>
                         </div>
                         <div class="form">
                             #{form id: 'formUser', action:@User.insert() }
+								<input type="text" placeholder="Nome" name="name" id="name"/>
+                                <div class="errorMessage" id="nameValidation">Nome inválido</div>                            
                                 <input type="text" placeholder="Email" name="email" id="email"/>
-                                <div class="errorMessage" id="emailValidation">Digite um e-mail válido</div>
+                                <div class="errorMessage" id="emailValidation">Digite um e-mail válido</div>                                
                                 <input type="password" placeholder="Senha" name="password" id="password"/>
                                 <div class="errorMessage" id="passwordValidation">Este campo é obrigatório</div>
                                 <input type="password" placeholder="Confirme Senha" name="passwordConfirmation" id="passwordConfirmation"/>
@@ -31,10 +60,9 @@
                         </div>
                     </div>
                 </div>
-                <p class="already">Você já tem uma conta? 
+				<p class="already">Voc&#234; j&#225; tem uma conta? 
                     <a href="@{User.signin()}">Entre</a></p>
             </div>
         </div>
-    </div>
-    </body>
-    </html>
+	</body>
+</html>

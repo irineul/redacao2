@@ -10,8 +10,12 @@ GET     /index                                  Application.index
 GET     /signup                                 User.signup
 GET     /signin                                 User.signin
 GET     /reset                                  User.reset
+GET     /channel                                User.channel
 
 GET     /interno                                Writing.index
+
+# Payment
+GET     /payment                                Payment.index
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

@@ -1,0 +1,18 @@
+#{extends 'main.html' /}
+#{set title:'Home' /} 
+#{get 'moreStyles' /}
+#{get 'moreScripts' /}
+
+<html>
+<head>
+</head>
+	<body>
+		<!-- INICIO FORMULARIO BOTAO PAGSEGURO -->
+		<form target="pagseguro" action="https://pagseguro.uol.com.br/v2/pre-approvals/request.html" method="post">
+		<!-- NÌO EDITE OS COMANDOS DAS LINHAS ABAIXO -->
+		<input type="hidden" name="code" value="C51C43EC1212AE4664201FAB4DE9EA40" />
+		<input type="image" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/assinaturas/209x48-assinar-assina.gif" name="submit" alt="Pague com PagSeguro - Ž r‡pido, gr‡tis e seguro!" />
+		</form>
+		<!-- FINAL FORMULARIO BOTAO PAGSEGURO -->		
+    </body>
+</html>

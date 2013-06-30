@@ -9,6 +9,21 @@
 	<link rel="stylesheet" type="text/css" href="@{'/public/stylesheets/signin.css'}">
 </head>
 	<body>
+	<div id="fb-root"></div>
+        <script>
+          //initializing API
+          window.fbAsyncInit = function() {
+            FB.init({appId: '435251833239716', status: true, cookie: true,
+                     xfbml: true});
+          };
+          (function() {
+            var e = document.createElement('script'); e.async = true;
+            e.src = document.location.protocol +
+              '//connect.facebook.net/pt_BR/all.js';
+            document.getElementById('fb-root').appendChild(e);
+          }());
+        </script>
+	
     <div id="box_login">
         <div class="container">
             <div class="span12 box_wrapper">
@@ -18,7 +33,7 @@
                             <h4>Entre na sua conta</h4>
                         </div>
                         <div class="social">
-                            <a class="face_login" href="#">
+                            <a style="cursor:pointer;" class="face_login" onclick="fblogin();return false;">
                                 <span class="face_icon">
                                     <img src="/public/img/i_face.png" alt="fb" alt=""/>
                                 </span>
@@ -26,7 +41,7 @@
                             </a>
                             <div class="division">
                                 <hr class="left">
-                                <span>or</span>
+                                <span>ou</span>
                                 <hr class="right">
                             </div>
                         </div>
@@ -51,8 +66,17 @@
                         </div>
                     </div>
                 </div>
-                <p class="already">Ainda n‹o se cadastrou? <a href="@{User.signup()}"> Cadastre-se em 30 segundos</a></p>
+                <p class="already">Ainda n&#227;o se cadastrou? <a href="@{User.signup()}"> Cadastre-se em 30 segundos</a></p>
             </div>
         </div>
 	</body>
 </html>
+
+<script>
+  //your fb login function
+  function fblogin() {
+    FB.login(function(response) {
+      alert('opa');
+    }, {scope:'read_stream,publish_stream,offline_access'});
+  }
+</script>

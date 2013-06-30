@@ -21,6 +21,10 @@ public class User extends Controller {
 		render();
 	}
 	
+	public static void channel(){
+		render();
+	}
+	
     public static void insert() {
     	UserModel user = getUserFromRequest();
     	UserDao.getInstance().save(user);
