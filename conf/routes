@@ -7,10 +7,11 @@ GET     /                                       Application.index
 GET     /index                                  Application.index
 
 # User
-GET     /signup                                 User.signup
-GET     /signin                                 User.signin
-GET     /reset                                  User.reset
-GET     /channel                                User.channel
+GET     /signup                                 					User.signup
+GET     /signin                                 					User.signin
+GET     /reset                                  					User.reset
+GET     /channel                                					User.channel
+GET		/signInByFacebook/{<[0-9]+>id}/name/{name}/email/{email} 	User.signInByFacebook					
 
 GET     /interno                                Writing.index
 

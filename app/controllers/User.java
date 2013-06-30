@@ -28,7 +28,7 @@ public class User extends Controller {
     public static void insert() {
     	UserModel user = getUserFromRequest();
     	UserDao.getInstance().save(user);
-    	EmailHelper.getInstance().sendEmail(user.getEmail(),"Bem-Vindo", "O Douglas é pica nao adianta");
+    	EmailHelper.getInstance().sendEmail(user.getEmail(),"Bem-Vindo", "O Douglas é gay.");
     	signin();
     }
     
@@ -37,7 +37,6 @@ public class User extends Controller {
     	user = UserDao.getInstance().findUserByEmailAndPassword(user);
     	if (user != null) {
     		play.mvc.Scope.Session.current().put("userId",user.getId());
-    		System.out.println("User: " +user.id);
     		Writing.index();
     	}else{
     		signin();
@@ -65,4 +64,27 @@ public class User extends Controller {
     	user.setPassword(password);
     	return user;
 	}
+    
+    public static void signInByFacebook(String id, String name, String email)
+    {
+    	/* Get User by facebook id */
+    	UserModel user = UserDao.getInstance().findByIdFacebook(Long.parseLong(id));
+    	
+    	/* If user doesen't exists, I will insert him on our database and automatically login the user on system*/
+    	if(user == null || user.id == 0)
+    	{
+    		user = new UserModel();
+    		user.setEmail(email);
+    		user.setName(name);
+    		user.setIdFacebook(id);
+    		UserDao.getInstance().save(user);
+    		play.mvc.Scope.Session.current().put("userId",user.getId());
+    		Writing.index();
+    	}
+    	else
+    	{
+    		play.mvc.Scope.Session.current().put("userId",user.getId());
+    		Writing.index();
+    	}
+    }
 }

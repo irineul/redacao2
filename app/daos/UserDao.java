@@ -33,4 +33,12 @@ public class UserDao {
 	public UserModel findById(long id) {
 		return UserModel.findById(id);
 	}
+	
+	public UserModel findByIdFacebook(long id) {
+		List<UserModel> result = UserModel.find("id_facebook = ?", id).fetch();
+		if (result != null && result.size() > 0) {
+			return result.get(0);
+		}
+		return null;
+	}	
 }
